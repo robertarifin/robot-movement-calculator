@@ -25,7 +25,6 @@ class Robot {
       board[y][x] = '';
       board[y][x + 1] = 'R';
 
-      console.log('berarti sini');
       return x + 1;
     } else {
       return x;

@@ -45,25 +45,29 @@ class RobotController {
             break;
           case 'PLACE':
             let nextPositionArr = commands[ i + 1].split(',');
-            nextX = Number(nextPositionArr[0]);
-            nextY = Number(4 - nextPositionArr[1]);
-            nextFacing = nextPositionArr[2];
+            let nextX = Number(nextPositionArr[0]);
+            let nextY = Number(4 - nextPositionArr[1]);
+            let nextFacing = nextPositionArr[2];
 
-            if (Robot.placeRobot) {
-              
+            if (Robot.placeRobot(nextX, nextY, board)) {
+              board[currentY][currentX] = '';
+              currentX = nextX;
+              currentY = nextY;
+              currentFacing = nextFacing;
             }
           
             i++;
+            break;
           case 'REPORT':
             View.printResult(currentX, 4 - currentY, currentFacing);
-            result = (`${currentX}, ${4 - currentY}, ${currentFacing}`)
+            result = (`${currentX}, ${4 - currentY}, ${currentFacing}`);
             break;
         }
       }
     }
 
     if (result.length === 0) {
-      View.printResult('Robot cannot be placed at safe position for the first time')
+      View.printError('Robot cannot be placed at safe position for the first time')
     }
 
     return result;
