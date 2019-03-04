@@ -2,7 +2,7 @@ class Robot {
   static placeRobot(x, y, board) {
     if (x >= 0 && x < 5 && y >= 0 && y < 5) {
       board[y][x] = 'R';
-      
+
       return true;
     } else {
       return false;
@@ -13,6 +13,10 @@ class Robot {
     if (Robot.checkMovement(x, y, 'NORTH')) {
       board[y][x] = '';
       board[y- 1][x] = 'R';
+
+      return y - 1;
+    } else {
+      return y;
     } 
   }
 
@@ -20,6 +24,11 @@ class Robot {
     if (Robot.checkMovement(x, y, 'EAST')) {
       board[y][x] = '';
       board[y][x + 1] = 'R';
+
+      console.log('berarti sini');
+      return x + 1;
+    } else {
+      return x;
     } 
   }
 
@@ -27,6 +36,10 @@ class Robot {
     if (Robot.checkMovement(x, y, 'SOUTH')) {
       board[y][x] = '';
       board[y + 1][x] = 'R';
+
+      return y + 1;
+    } else {
+      return y;
     } 
   }
 
@@ -34,6 +47,10 @@ class Robot {
     if (Robot.checkMovement(x, y, 'WEST')) {
       board[y][x] = '';
       board[y][x - 1] = 'R';
+
+      return x - 1;
+    } else {
+      return x;
     } 
   }
 
