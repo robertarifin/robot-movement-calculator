@@ -13,10 +13,19 @@ class RobotController {
       if (!initialPosition) {
         if (commands[i] === 'PLACE') {
           let positionArr = commands[ i + 1].split(',');
-          currentX = Number(positionArr[0]);
-          currentY = Number(4 - positionArr[1]);
-          currentFacing = positionArr[2];
-          initialPosition = true;
+
+          let nextX = Number(positionArr[0]);
+          let nextY = Number(4 - positionArr[1]);
+          let nextFacing = positionArr[2];
+
+          if (Robot.placeRobot(nextX, nextY, board)) {
+            board[currentY][currentX] = '';
+            currentX = nextX;
+            currentY = nextY;
+            currentFacing = nextFacing;
+            initialPosition = true;
+          }
+         
           i++;
         }  
       } else {
@@ -67,7 +76,10 @@ class RobotController {
     }
 
     if (result.length === 0) {
-      View.printError('Robot cannot be placed at safe position for the first time')
+      console.log(result, 'berapa')
+      result = 'Robot cannot be placed at safe position for the first time';
+      View.printError(result);
+
     }
 
     return result;

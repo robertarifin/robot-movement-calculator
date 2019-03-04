@@ -3,7 +3,6 @@ const expect = chai.expect;
 
 const RobotController = require('../controllers/RobotController.js');
 const Board = require('../helpers/Board.js');
-const sinon = require('sinon');
 
 const board = Board.createBoard();
 
@@ -16,13 +15,9 @@ describe('Testing robot controller feature', function () {
   })
 
   it('should print error when robot cannot be placed for the first time', (done) => {
-    RobotController.doCommands();
-    let spy = sinon.spy(console, 'log');
-    expect(spy).to.have.been.calledWith('abc');
-
+    const expectedResult = 'Robot cannot be placed at safe position for the first time';
+    const actualResult = RobotController.doCommands(['PLACE', '5,10,NORTH', 'LEFT', 'REPORT'], board);
+    expect(actualResult).equal(expectedResult);
     done();
-  })
-
-
-
+  })  
 })
