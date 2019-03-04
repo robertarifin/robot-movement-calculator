@@ -143,4 +143,20 @@ describe('Testing robot  movement feature', function () {
     expect(result).to.equal(expectedFacing);
     done();
   })
+
+  it ('should return true when robot can be placed', (done) => {
+      let currentX = 3;
+      let currentY = 4;
+      let result = Robot.placeRobot(currentX, currentY, board);
+      expect(result).to.equal(true);
+      done();
+  })
+
+  it ('should return false when robot cannot be placed', (done) => {
+    let currentX = 5;
+    let currentY = 4;
+    let result = Robot.placeRobot(currentX, currentY, board);
+    expect(result).to.equal(false);
+    done();
+})
 })
