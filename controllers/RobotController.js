@@ -1,6 +1,5 @@
-
-module.exports = {
-  doCommands(commands) {
+class RobotController {
+  static doCommands(commands, board) {
     let initialPosition = false;
 
     commands.forEach((command) => {
@@ -14,5 +13,7 @@ module.exports = {
     //   }
     // });
     })
-  },
+  }
 }
+
+module.exports = RobotController;

@@ -1,11 +1,11 @@
-module.exports = {
-  createBoard(rows , columns) {
+class Board {
+  static createBoard() {
     let boardArr = [];
 
-    for (let i = 0; i < rows; i++) {
+    for (let i = 0; i < 5; i++) {
       let innerArr = [];
 
-      for (let j = 0; j < columns; j++) {
+      for (let j = 0; j < 5; j++) {
         innerArr.push('');
       }
 
@@ -14,5 +14,6 @@ module.exports = {
 
     return boardArr;
   }
-
 }
+
+module.exports = Board;
