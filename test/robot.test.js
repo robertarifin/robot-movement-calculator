@@ -48,7 +48,6 @@ describe('Testing robot  movement feature', function () {
     let currentY = 0;
     board[currentY][currentX] = "R";
     Robot.moveSouth(currentX, currentY, board);
-    console.log(board, "berapa")
     expect(board[currentY][currentX]).to.equal('');
     expect(board[currentY + 1][currentX]).to.equal('R');
     done();
@@ -78,6 +77,70 @@ describe('Testing robot  movement feature', function () {
     board[currentY][currentX] = "R";
     Robot.moveWest(currentX, currentY, board);
     expect(board[currentY][currentX]).to.equal('R');
+    done();
+  })
+
+  it ('should return correct facing when the robot doing left rotation(case: north as current facing', (done) => {
+    let currentFacing = 'NORTH';
+    let expectedFacing = 'WEST';
+    let result = Robot.rotateLeft(currentFacing);
+    expect(result).to.equal(expectedFacing);
+    done();
+  })
+
+  it ('should return correct facing when the robot doing left rotation(case: east as current facing', (done) => {
+    let currentFacing = 'EAST';
+    let expectedFacing = 'NORTH';
+    let result = Robot.rotateLeft(currentFacing);
+    expect(result).to.equal(expectedFacing);
+    done();
+  })
+
+  it ('should return correct facing when the robot doing left rotation(case: south as current facing', (done) => {
+    let currentFacing = 'SOUTH';
+    let expectedFacing = 'EAST';
+    let result = Robot.rotateLeft(currentFacing);
+    expect(result).to.equal(expectedFacing);
+    done();
+  })
+
+  it ('should return correct facing when the robot doing left rotation(case: west as current facing', (done) => {
+    let currentFacing = 'WEST';
+    let expectedFacing = 'SOUTH';
+    let result = Robot.rotateLeft(currentFacing);
+    expect(result).to.equal(expectedFacing);
+    done();
+  })
+
+  it ('should return correct facing when the robot doing right rotation(case: north as current facing', (done) => {
+    let currentFacing = 'NORTH';
+    let expectedFacing = 'EAST';
+    let result = Robot.rotateRight(currentFacing);
+    expect(result).to.equal(expectedFacing);
+    done();
+  })
+
+  it ('should return correct facing when the robot doing right rotation(case: east as current facing', (done) => {
+    let currentFacing = 'EAST';
+    let expectedFacing = 'SOUTH';
+    let result = Robot.rotateRight(currentFacing);
+    expect(result).to.equal(expectedFacing);
+    done();
+  })
+
+  it ('should return correct facing when the robot doing right rotation(case: south as current facing', (done) => {
+    let currentFacing = 'SOUTH';
+    let expectedFacing = 'WEST';
+    let result = Robot.rotateRight(currentFacing);
+    expect(result).to.equal(expectedFacing);
+    done();
+  })
+
+  it ('should return correct facing when the robot doing right rotation(case: west as current facing', (done) => {
+    let currentFacing = 'WEST';
+    let expectedFacing = 'NORTH';
+    let result = Robot.rotateRight(currentFacing);
+    expect(result).to.equal(expectedFacing);
     done();
   })
 })

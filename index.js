@@ -3,5 +3,5 @@ const Board = require('./helpers/Board.js');
 const commands = process.argv.slice(2);
 
 const board = Board.createBoard();
-
+console.log(commands);
 robotController.doCommands(commands, board);

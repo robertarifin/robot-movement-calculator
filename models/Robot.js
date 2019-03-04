@@ -1,4 +1,14 @@
 class Robot {
+  static placeRobot(x, y, board) {
+    if (x >= 0 && x < 5 && y >= 0 && y < 5) {
+      board[y][x] = 'R';
+      
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   static moveNorth(x, y, board) {
     if (Robot.checkMovement(x, y, 'NORTH')) {
       board[y][x] = '';
@@ -25,6 +35,48 @@ class Robot {
       board[y][x] = '';
       board[y][x - 1] = 'R';
     } 
+  }
+
+  static rotateLeft(currentFacing) {
+    let result = '';
+
+    switch (currentFacing) {
+      case 'NORTH':
+        result = 'WEST';
+        break;
+      case 'EAST':
+        result = 'NORTH';
+        break;
+      case 'SOUTH':
+        result = 'EAST';
+        break;
+      case 'WEST':
+        result = 'SOUTH';
+        break;
+    }
+
+    return result;
+  }
+
+  static rotateRight(currentFacing) {
+    let result = '';
+
+    switch (currentFacing) {
+      case 'NORTH':
+        result = 'EAST';
+        break;
+      case 'EAST':
+        result = 'SOUTH';
+        break;
+      case 'SOUTH':
+        result = 'WEST';
+        break;
+      case 'WEST':
+        result = 'NORTH';
+        break;
+    }
+
+    return result;
   }
 
   static checkMovement(x ,y, pos) {
